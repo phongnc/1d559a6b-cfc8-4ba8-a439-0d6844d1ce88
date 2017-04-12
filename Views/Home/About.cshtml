@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<p>
+    step
+    <xmp>
+        Design DB
+        Create Tables_vw and Columns_vw with following script
+            [Tables_vw]
+            SELECT name AS Table_Name, modify_date AS Date_Modified, create_date AS Date_Created
+            FROM     sys.tables AS t
+            [Columns_vw]
+            SELECT t.name AS Table_Name, c.name AS Column_Name, d.name AS Data_Type, c.max_length AS Max_Len, c.is_identity AS Is_Id, c.is_nullable AS Is_Null, c.column_id AS STT
+            FROM     sys.tables AS t INNER JOIN
+            sys.columns AS c ON t.object_id = c.object_id INNER JOIN
+            sys.types AS d ON c.user_type_id = d.user_type_id
+        Create Tables_tb and Columns_tb by run [tables_script] script in Index
+
+        Import data from _vw to _tb by run following script
+            insert into Tables_tb(Table_Name, Display_Name, Use_As) select Table_Name, '', '' from Tables_vw where Table_Name not in ('Templates_tb', 'Tables_tb', 'Columns_tb')
+            insert into Columns_tb(Table_Name, Column_Name, Display_Name, Use_As) select Table_Name, Column_Name, '', '' from Columns_vw where Table_Name not in ('Templates_tb', 'Tables_tb', 'Columns_tb')
+    </xmp>
+</p>
+
+
+<p>
+    them vao index.html va app.js
+    <xmp>
+        <script src="lib/ionic/js/angular/angular-resource.js"></script>
+        <script src="lib/angular-translate/angular-translate.min.js"></script>
+        <script src="js/services.js"></script>
+        angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+    </xmp>
+</p>
+<p>
+    them file services.js
+    <xmp>
+	app.service('DataServices', function ($http, $q, $state, $ionicLoading) {
+		var service_url = 'http://localhost:8101/api/';
+		//service_url = 'http://roomstyle.ssis.us/';
+		token = '';
+		try {
+			token = JSON.parse(window.localStorage.getItem('authorizationData')).token;
+		} catch (e) { }
+		var apiGET = function(url, callback){
+			$ionicLoading.show();
+			$http({
+				method: 'GET',
+				url: service_url + url,
+				headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer ' + token},
+			}).then(function success(res) {
+				callback(res.data);
+				$ionicLoading.hide();
+			}, function error(res) {
+				$ionicLoading.hide();
+				$state.go('app.auth');
+			});
+		};
+		var apiPOST = function(url, callback, data){
+			$ionicLoading.show();
+			$http({
+				method: 'POST',
+				url: service_url + url,
+				headers: {'Authorization': 'Bearer ' + token},
+				data: data
+			}).then(function success(res) {
+				callback(res.data);
+				$ionicLoading.hide();
+			}, function error(res) {
+				$ionicLoading.hide();
+				$state.go('app.auth');
+			});
+		}
+		return {
+			// generator
+		}
+	})
+    </xmp>
+</p>

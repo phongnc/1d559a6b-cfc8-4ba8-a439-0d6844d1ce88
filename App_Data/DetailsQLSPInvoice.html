@@ -1,0 +1,44 @@
+
+<ion-view view-title="{{'Details' | translate}} {{ 'HÓA ĐƠN' | translate }}">
+    <ion-nav-buttons side="right">
+        <button class="button ink button-icon button-clear ion-edit" ng-click="CreateEditQLSPInvoice(qlspInvoice)"></button>
+    </ion-nav-buttons>
+	<ion-content class="crud scroll-content ionic-scroll card">
+        <div class="padding product">
+            <h4 class="title">{{qlspInvoice.QLSPKhachHang_title}}</h4>
+    <div class="ecommerce row">
+        <ion-scroll direction="x" style="width:100%;">
+            <div class="wide">
+                <div class="box" ui-sref="app.IndexQLSPOrderByQLSPInvoice({qlspInvoice_id:qlspInvoice.QLSPInvoice_id})" ng-hide="''=='QLSPOrder'" style="height:60px;width:auto;">
+                    <button class="button button-raised button-dark">{{ 'QLSPOrder' | translate }}</button>
+                </div>
+
+            </div>
+        </ion-scroll>
+    </div>
+        </div>
+	    <div class="list padding">
+            <div class="item item-divider">{{ 'Infomation' | translate }}</div>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Id' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspInvoice.QLSPInvoice_id}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Đợt Bán' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspInvoice.QLSPChannel_id}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Ngày' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspInvoice.QLSPInvoice_created}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Tổng' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspInvoice.QLSPInvoice_total}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Tên Khách Hàng' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspInvoice.QLSPKhachHang_title}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'SĐT Khách Hàng' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspInvoice.QLSPKhachHang_mobile}} </p>
+	      </label>
+
+	    </div>
+	</ion-content>
+</ion-view>
+

@@ -1,0 +1,44 @@
+
+<ion-view view-title="{{'Details' | translate}} {{ 'ORDER' | translate }}">
+    <ion-nav-buttons side="right">
+        <button class="button ink button-icon button-clear ion-edit" ng-click="CreateEditQLSPOrder(qlspOrder)"></button>
+    </ion-nav-buttons>
+	<ion-content class="crud scroll-content ionic-scroll card">
+        <div class="padding product">
+            <h4 class="title">{{qlspOrder.QLSPSanPham_title}}</h4>
+    <div class="ecommerce row">
+        <ion-scroll direction="x" style="width:100%;">
+            <div class="wide">
+
+            </div>
+        </ion-scroll>
+    </div>
+        </div>
+	    <div class="list padding">
+            <div class="item item-divider">{{ 'Infomation' | translate }}</div>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Id' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspOrder.QLSPOrder_id}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Hóa Đơn' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspOrder.QLSPInvoice_id}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Mã Sản Phẩm' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspOrder.QLSPSanPham_code}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Ngày' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspOrder.QLSPOrder_created}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Số Lượng' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspOrder.QLSPOrder_count}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Tổng' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspOrder.QLSPOrder_total}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Tên Sản Phẩm' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspOrder.QLSPSanPham_title}} </p>
+	      </label>
+
+	    </div>
+	</ion-content>
+</ion-view>
+

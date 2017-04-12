@@ -1,0 +1,50 @@
+﻿@model SSISApplication.Generator.Models.Columns_tb
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Columns_tb</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Table_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Table_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Column_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Column_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Display_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Display_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Use_As)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Use_As)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

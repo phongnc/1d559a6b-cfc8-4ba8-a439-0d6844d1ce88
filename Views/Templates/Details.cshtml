@@ -1,0 +1,26 @@
+﻿@model SSISApplication.Generator.Models.Templates_tb
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Templates_tb</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Template_Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Template_Content)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Template_Name }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
