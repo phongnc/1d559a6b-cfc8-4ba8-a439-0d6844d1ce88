@@ -264,7 +264,7 @@ INSERT [dbo].[Templates_tb] ([Template_Name], [Template_Content]) VALUES (N'cont
 ')
 GO
 INSERT [dbo].[Templates_tb] ([Template_Name], [Template_Content]) VALUES (N'controllers_js_CreateEdit_Field_Parent', N'            if ($scope.@Parent_Object_id) {
-                $scope.CreateEdit@Model_NameWnd.@Model_Object.@Parent_Name_id = $scope.@Parent_Object_id;
+                $scope.CreateEdit@Model_NameWnd.@Model_Object.@Parent_Name_id = parseInt($scope.@Parent_Object_id);
             }
 ')
 GO

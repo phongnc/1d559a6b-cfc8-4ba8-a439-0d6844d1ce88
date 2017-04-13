@@ -1,6 +1,6 @@
 ﻿USE [SSIS_IPM2]
 GO
-/****** Object:  Table [dbo].[QLSPChannel_Tb]    Script Date: 13/04/2017 5:14:07 PM ******/
+/****** Object:  Table [dbo].[QLSPChannel_Tb]    Script Date: 13/04/2017 6:20:57 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -17,7 +17,7 @@ CREATE TABLE [dbo].[QLSPChannel_Tb](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[QLSPInvoice_Tb]    Script Date: 13/04/2017 5:14:07 PM ******/
+/****** Object:  Table [dbo].[QLSPInvoice_Tb]    Script Date: 13/04/2017 6:20:57 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -40,7 +40,7 @@ CREATE TABLE [dbo].[QLSPInvoice_Tb](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[QLSPKhachHang_Tb]    Script Date: 13/04/2017 5:14:07 PM ******/
+/****** Object:  Table [dbo].[QLSPKhachHang_Tb]    Script Date: 13/04/2017 6:20:57 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -63,7 +63,7 @@ CREATE TABLE [dbo].[QLSPKhachHang_Tb](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[QLSPOrder_Tb]    Script Date: 13/04/2017 5:14:07 PM ******/
+/****** Object:  Table [dbo].[QLSPOrder_Tb]    Script Date: 13/04/2017 6:20:57 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -87,7 +87,7 @@ CREATE TABLE [dbo].[QLSPOrder_Tb](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[QLSPSanPham_Tb]    Script Date: 13/04/2017 5:14:07 PM ******/
+/****** Object:  Table [dbo].[QLSPSanPham_Tb]    Script Date: 13/04/2017 6:20:57 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -112,7 +112,7 @@ CREATE TABLE [dbo].[QLSPSanPham_Tb](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[QLSPThanhVien_Tb]    Script Date: 13/04/2017 5:14:07 PM ******/
+/****** Object:  Table [dbo].[QLSPThanhVien_Tb]    Script Date: 13/04/2017 6:20:57 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
