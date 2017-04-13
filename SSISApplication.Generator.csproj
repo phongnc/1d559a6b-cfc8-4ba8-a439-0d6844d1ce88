@@ -161,6 +161,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="templates.sql" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -194,6 +195,7 @@
     <Content Include="Views\Columns\Edit.cshtml" />
     <Content Include="Views\Columns\Index.cshtml" />
     <Content Include="Views\Tables\AllTable.cshtml" />
+    <Content Include="Views\Home\Script.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

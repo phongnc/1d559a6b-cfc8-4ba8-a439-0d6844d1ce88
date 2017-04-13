@@ -688,13 +688,66 @@ namespace SSISApplication.Generator.Controllers
             string Template_Wrapper = db.Templates_tb.First(o => o.Template_Name == "_APPController_cs").Template_Content;
             var list = db.Tables_tb.ToList();
             string Template_Content = "";
-                
+
             for (int i = 0; i < list.Count; i++)
             {
                 if (Report_(list[i].Table_Name)) Template_Wrapper = Template_Wrapper.Replace("// ReportModelClass", Generate_controller_cs_ReportCreateEdit_Parameter(list[i].Table_Name));
                 Template_Content += Replace(Generate_controller_cs(list[i].Table_Name), list[i].Table_Name);
             }
             return Template_Wrapper.Replace("// ApiControllers", Template_Content);
+        }
+        public static string Generateall_sql_script()
+        {
+            Model1 db = new Model1();
+            string sql = db.Templates_tb.First(o => o.Template_Name == "__SQLScript").Template_Content;
+            sql = sql.Replace("CREATE TABLE", "#CREATE TABLE");
+            List<string> sqls = sql.Split(new char[] { '#' }).ToList();
+            sql = "";
+            for (int i = 0; i < sqls.Count; i++)
+            {
+                try
+                {
+                    sqls[i] = sqls[i].Replace("CONSTRAINT [PK_", "#CONSTRAINT [PK_");
+                    List<string> sqlss = sqls[i].Split(new char[] { '#' }).ToList().Where(o => o.StartsWith("CREATE TABLE")).ToList();
+                    for (int j = 0; j < sqlss.Count; j++)
+                    {
+                        if (sqlss[j].StartsWith("CREATE TABLE"))
+                        {
+                            sqlss[j] = sqlss[j].Replace("CONSTRAINT", "#CONSTRAINT");
+                            var xxx = sqlss[j].Split(new char[] { '#' }).ToList();
+                            sqlss[j] = "";
+                            for (int x = 0; x < xxx.Count; x++)
+                            {
+                                if (xxx[x].StartsWith("CONSTRAINT")) {
+                                    if (xxx[x].Contains(","))
+                                    {
+                                        xxx[x] = xxx[x].Substring(xxx[x].IndexOf(','));
+                                        sqlss[j] += xxx[x];
+                                    }
+                                }
+                                else { sqlss[j] += xxx[x]; }
+                            }
+
+                            string sql1 = sqlss[j].Replace("\r", "").Replace("\n", "").Replace("\t", "").Replace("[", "").Replace("]", "").Replace("dbo.", "").Replace(" ,", ",")
+                                .Replace("int IDENTITY(1,1) NOT NULL", "INT AUTO_INCREMENT")
+                                .Trim();
+                            if (sql1.EndsWith(",")) sql1 = sql1.Substring(0, sql1.Length - 1);
+                            if (!sql1.EndsWith(")")) sql1 += ")";
+                            sql += ";" + sql1;
+                        }
+                    }
+                }
+                catch { }
+            }
+
+            var list = db.Tables_tb.ToList();
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                sql += "\r\n" + "alasql.tables." + list[i].Table_Name + ".data = localDB.SSISDB.tables." + list[i].Table_Name + ".data;";
+                sql += "\r\n" + @"alasql.databases[""SSISDB""].tables[""" + list[i].Table_Name + @"""].identities = localDB.SSISDB.tables." + list[i].Table_Name + ".identities;";
+            }
+            return sql;
         }
         public static string Generateall_app_js_menu()
         {
@@ -803,6 +856,11 @@ namespace SSISApplication.Generator.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Script()
+        {
             return View();
         }
     }

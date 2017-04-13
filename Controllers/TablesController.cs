@@ -14,6 +14,12 @@ namespace SSISApplication.Generator.Controllers
     {
         private Model1 db = new Model1();
 
+        public ActionResult SQLScript()
+        {
+            ViewBag.Template_Content = TemplateConfig.Generateall_sql_script();
+            ViewBag.Title = "Generateall_sql_script";
+            return View("AllTable");
+        }
         public ActionResult AllJSMenu()
         {
             ViewBag.Template_Content = TemplateConfig.Generateall_app_js_menu();
