@@ -1,51 +1,63 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<xmp>
-	<h2>Rule</h2>
-	Generator theo bảng:
-	- Lấy tên bảng
-	- Generate phần API
-	- Tìm xem bảng có parent hay k0 bằng tìm 'parent' (_Parent), nếu có tạo IndexByParent
-	- Tìm xem bảng có là select hay k0 bằng tìm 'optionvalue', nếu có tạo IndexSelect
-	Một bảng chỉ có 1 cột config là parent, còn lại chuyển thành select. 1 cột có thể là parent ở nhiều bảng khác => luật cho controller_cs_IndexByParent
-	<h2>Note</h2>
-    Cột [ColumnName]_ud cột đệ quy của cột [ColumnName]_id
-    Bảng [TableName][digit]Ex_Tb bảng mở rộng của bảng [TableName], không lấy thông tin bảng này cho Index
-	Bảng [TableName][digit]Ex_Tb có key là [TableName]_id => lỗi trong Details và CreateEdit (controller.cs), lỗi trong IndexBy, Details (app.js)
-    Bảng [TableName]Ux_Tb bảng mở rộng của bảng SSUser_Tb, khi lấy thông tin từ bảng này cần giới hạn thông tin trong [ProjectPrefix]User_Tb
-    Bảng [ProjectPrefix]User_Tb bảng tham chiếu user của [Project] với SSUser_id, không hiển thị bảng này trong bất kỳ api nào
-	Bảng [ProjectPrefix]User_Tb có key khác [TableName]_id => lỗi trong Details và CreateEdit (controller.cs)
-    Nếu có trường SSUser_id cần thêm [Newtonsoft.Json.JsonIgnore] để k0 chuyển xuống client
-	<h2>Bug</h2>
-    Chua xet nhieu loai 1 bang duoc dung lam nhieu loai select khac nhau cung bang _Select
-    Khi su dung firstletter tach ra truong hop k0 su dung title ma su dung createddate thi phai la var firstLetter = moment(qlspInvoice.QLSPInvoice_created).format("YYYYMMDD HH:mm:ss").substring(0, 8).toUpperCase();
-	Thêm vào UseAs của bảng giá trị cache để lưu các bảng cần dùng như global ví dụ bảng QLSPSanPham_Tb
-	Để bỏ login vào AppController replace all Authrize thành AllowAnonymous và replace cuser = thành cuser = 1;// và replace QLSPThanhVien_id = thành QLSPThanhVien_id = 1;//
-    <h2>Use As</h2>
-    TABLE:
-    Client0: k0 generate bảng này xuống client
-    notification: bảng notfiy
-    report: bảng report
-    Index0: bảng chính
-    Index1: bảng phụ cấp 1
-    menu: tạo menu cho bảng này
-    COLUMN:
-    parent: parent id hoặc parent key
-    owner: owned user id
-    scope: 
-    optionvalue: field is value of option in select control
-    optiontext: field is text of option in select control
-    title: field is title of record
-    diplaynone: generate display:none control
-    hidden: generate hidden control
-    number: field is number type, generate number input control
-    tel: field is tel type, generate tel input control
-    email: field is email type, generate email input control
-    date: field is date type, generate date control
-    select: field is select type, mapped to other table, generate select control
-    editor: field is long text type, generate textarea control
-</xmp>
+<h1>NOTE</h1>
+<h4>Rule</h4>
+<p>
+    <xmp>
+        Generator theo bảng:
+        - Lấy tên bảng
+        - Generate phần API
+        - Tìm xem bảng có parent hay k0 bằng tìm 'parent' (_Parent), nếu có tạo IndexByParent
+        - Tìm xem bảng có là select hay k0 bằng tìm 'optionvalue', nếu có tạo IndexSelect
+        Một bảng chỉ có 1 cột config là parent, còn lại chuyển thành select. 1 cột có thể là parent ở nhiều bảng khác => luật cho controller_cs_IndexByParent
+    </xmp>
+</p>
+<h4>Note</h4>
+<p>
+    <xmp>
+        Cột [ColumnName]_ud là cột đệ quy của cột [ColumnName]_id
+        Bảng [TableName][digit]Ex_Tb bảng mở rộng của bảng [TableName], không lấy thông tin bảng này cho Index
+        Bảng [TableName][digit]Ex_Tb có key là [TableName]_id => lỗi trong Details và CreateEdit (controller.cs), lỗi trong IndexBy, Details (app.js)
+        Bảng [TableName]Ux_Tb bảng mở rộng của bảng SSUser_Tb, khi lấy thông tin từ bảng này cần giới hạn thông tin trong [ProjectPrefix]User_Tb
+        Bảng [ProjectPrefix]User_Tb bảng tham chiếu user của [Project] với SSUser_id, không hiển thị bảng này trong bất kỳ api nào
+        Bảng [ProjectPrefix]User_Tb có key khác [TableName]_id => lỗi trong Details và CreateEdit (controller.cs)
+        Nếu model có trường SSUser_id cần thêm [Newtonsoft.Json.JsonIgnore] để k0 chuyển xuống client
+    </xmp>
+</p>
+<h4>Todo</h4>
+<p>
+    <xmp>
+        Chua xet nhieu loai 1 bang duoc dung lam nhieu loai select khac nhau cung bang _Select
+        Khi sử dụng firstletter tách ra trường hợp k0 sử dụng title mà sử dụng createddate thì phải là var firstLetter = moment(qlspInvoice.QLSPInvoice_created).format("YYYYMMDD HH:mm:ss").substring(0, 8).toUpperCase();
+        Thêm vào UseAs của bảng giá trị cache để lưu các bảng cần dùng như global ví dụ bảng QLSPSanPham_Tb
+        Để bỏ login vào AppController replace all Authorize thành AllowAnonymous và replace cuser = thành cuser = 1;// và replace QLSPThanhVien_id = thành QLSPThanhVien_id = 1;//
+    </xmp>
+</p>
+<h4>Use As</h4>
+<p>
+    <xmp>
+        TABLE:
+        Client0: k0 generate bảng này xuống client
+        Index0: bảng chính
+        Index1: bảng phụ cấp 1
+        menu: tạo menu cho bảng này
+        report: bảng report
+        notification: bảng notfiy
+        COLUMN:
+        diplaynone: generate display:none control
+        hidden: generate hidden control
+        parent: field is parent id or parent key
+        owner: field is owned user id
+        scope: field is using as scope of app
+        optionvalue: field is value of option in select control
+        optiontext: field is text of option in select control
+        title: field is title of record
+        number: field is number type, generate number input control
+        tel: field is tel type, generate tel input control
+        email: field is email type, generate email input control
+        date: field is date type, generate date control
+        select: field is select type, mapped to other table, generate select control
+        editor: field is long text type, generate textarea control
+    </xmp>
+</p>

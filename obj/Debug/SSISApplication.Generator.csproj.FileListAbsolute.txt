@@ -50,3 +50,9 @@ D:\BOTEXAMPLES\GitHub\SSISApplication.Generator\bin\SSISApplication.Generator.dl
 D:\BOTEXAMPLES\GitHub\SSISApplication.Generator\bin\SSISApplication.Generator.pdb
 D:\BOTEXAMPLES\GitHub\SSISApplication.Generator\obj\Debug\SSISApplication.Generator.dll
 D:\BOTEXAMPLES\GitHub\SSISApplication.Generator\obj\Debug\SSISApplication.Generator.pdb
+F:\SSIS Git\SSISApplication.Generator\bin\SSISApplication.Generator.dll.config
+F:\SSIS Git\SSISApplication.Generator\bin\SSISApplication.Generator.dll
+F:\SSIS Git\SSISApplication.Generator\bin\SSISApplication.Generator.pdb
+F:\SSIS Git\SSISApplication.Generator\obj\Debug\SSISApplication.Generator.csprojResolveAssemblyReference.cache
+F:\SSIS Git\SSISApplication.Generator\obj\Debug\SSISApplication.Generator.dll
+F:\SSIS Git\SSISApplication.Generator\obj\Debug\SSISApplication.Generator.pdb

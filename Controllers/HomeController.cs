@@ -24,6 +24,7 @@ namespace SSISApplication.Generator.Controllers
     }
     public class TemplateConfig
     {
+        #region Sign Impl
         public static bool Client0_(string Table_Name)
         {
             Model1 db = new Model1();
@@ -36,9 +37,32 @@ namespace SSISApplication.Generator.Controllers
                 return false;
             }
         }
+        public static bool Report_(string Table_Name)
+        {
+            Model1 db = new Model1();
+            try
+            {
+                return db.Tables_tb.Count(o => (o.Table_Name == Table_Name) && (o.Use_As.Contains("report"))) > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static bool Notification_(string Table_Name)
+        {
+            Model1 db = new Model1();
+            try
+            {
+                return db.Tables_tb.Count(o => (o.Table_Name == Table_Name) && (o.Use_As.Contains("notification"))) > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public static string Parent_(string Table_Name)
         {
-            // tra ve bang parent
             Model1 db = new Model1();
             try
             {
@@ -71,30 +95,6 @@ namespace SSISApplication.Generator.Controllers
             catch
             {
                 return "";
-            }
-        }
-        public static bool Notification_(string Table_Name)
-        {
-            Model1 db = new Model1();
-            try
-            {
-                return db.Tables_tb.Count(o => (o.Table_Name == Table_Name) && (o.Use_As.Contains("notification"))) > 0;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        public static bool Report_(string Table_Name)
-        {
-            Model1 db = new Model1();
-            try
-            {
-                return db.Tables_tb.Count(o => (o.Table_Name == Table_Name) && (o.Use_As.Contains("report"))) > 0;
-            }
-            catch
-            {
-                return false;
             }
         }
         public static string Scope_Column_Name()
@@ -180,7 +180,7 @@ namespace SSISApplication.Generator.Controllers
             }
             catch
             {
-                return "";
+                return Model_Name(Table_Name);
             }
         }
         public static string Model_Title(string Table_Name)
@@ -195,6 +195,7 @@ namespace SSISApplication.Generator.Controllers
                 return "";
             }
         }
+        #endregion
         public static string Generate_controller_cs_Index(string Table_Name)
         {
             Model1 db = new Model1();
@@ -236,7 +237,7 @@ namespace SSISApplication.Generator.Controllers
                 string tmpTemplate_Content = "";
                 if (!string.IsNullOrEmpty(list[i].Use_As))
                 {
-                    if (list[i].Use_As.Contains("date")) tmpTemplate_Content = "public DateTime " + list[i].Column_Name + "f = new DateTime(); " + "public DateTime " + list[i].Column_Name + " = new DateTime(); ";
+                    if (list[i].Use_As.Contains("date")) tmpTemplate_Content = "public DateTime " + list[i].Column_Name + "f = new DateTime(); " + "public DateTime " + list[i].Column_Name + "t = new DateTime(); ";
                     if (list[i].Use_As.Contains("select"))
                     {
                         string tmpTable_Name = Select_(list[i].Column_Name);

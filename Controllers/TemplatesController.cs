@@ -15,9 +15,11 @@ namespace SSISApplication.Generator.Controllers
         private Model1 db = new Model1();
 
         // GET: /Templates/
-        public ActionResult Index()
+        public ActionResult Index(string searchParam)
         {
-            return View(db.Templates_tb.ToList());
+            if (string.IsNullOrEmpty(searchParam))
+                return View(db.Templates_tb.ToList());
+            return View(db.Templates_tb.Where(s => s.Template_Name.StartsWith(searchParam)).ToList());
         }
 
         // GET: /Templates/Details/5

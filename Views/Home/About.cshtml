@@ -1,13 +1,12 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h1>STEP</h1>
+<h3>Sql Server</h3>
 <p>
-    step
     <xmp>
-        Design DB
-        Create Tables_vw and Columns_vw with following script
+        1. Design DB
+        2. Create Tables_vw and Columns_vw with following script
             [Tables_vw]
             SELECT name AS Table_Name, modify_date AS Date_Modified, create_date AS Date_Created
             FROM     sys.tables AS t
@@ -16,15 +15,37 @@
             FROM     sys.tables AS t INNER JOIN
             sys.columns AS c ON t.object_id = c.object_id INNER JOIN
             sys.types AS d ON c.user_type_id = d.user_type_id
-        Create Tables_tb and Columns_tb by run [tables_script] script in Index
-
-        Import data from _vw to _tb by run following script
+        3. Create Templates_tb, Tables_tb and Columns_tb by run [tables_script] script in Index
+        4. Import data from _vw to _tb by run following script
             insert into Tables_tb(Table_Name, Display_Name, Use_As) select Table_Name, '', '' from Tables_vw where Table_Name not in ('Templates_tb', 'Tables_tb', 'Columns_tb')
             insert into Columns_tb(Table_Name, Column_Name, Display_Name, Use_As) select Table_Name, Column_Name, '', '' from Columns_vw where Table_Name not in ('Templates_tb', 'Tables_tb', 'Columns_tb')
     </xmp>
 </p>
-
-
+<h3>Visual Studio</h3>
+<p>
+    <xmp>
+        0. Create new Web Application
+        1. Generate by Entity Framework in Model folder
+        2. Edit Model/Templates_tb.cs
+            [Column(TypeName = "ntext")]
+            [AllowHtml]
+            [DataType(DataType.MultilineText)]
+            public string Template_Content { get; set; }
+        3. Generate by Scaffolding
+        4. Edit Controllers/TablesController -> ActionResult Edit(string id)
+            ViewBag.Template_Content = TemplateConfig.Generate(tables_tb.Table_Name);
+        5. Edit Views/Tables/Edit.cshtml
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Template_Content">Template_Content</label>
+                <div class="col-md-10">
+                    Html.TextArea("Template_Content", (string)ViewBag.Template_Content)
+                </div>
+            </div>
+        6. Edit Views/Templates/Edit.cshtml
+            Html.HiddenFor(model => model.Template_Content, new { id = "hidden_Template_Content" })
+    </xmp>
+</p>
+<h3>Ionic</h3>
 <p>
     them vao index.html va app.js
     <xmp>

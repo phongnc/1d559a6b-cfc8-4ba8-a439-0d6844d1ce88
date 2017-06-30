@@ -1,0 +1,57 @@
+
+<ion-modal-view>
+	<ion-header-bar class="bar-dark">
+    <button class="button button-clear" ng-click="closeQLSPOrderWnd()"><i class="icon ion-ios-close-outline"></i></button>
+	  <h1 class="title">{{newQLSPOrder ? "CREATE" : "EDIT" | translate}} {{'ORDER' | translate}}</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="saveQLSPOrder()"><i class="icon ion-checkmark-circled"></i></button>
+    </div>
+	</ion-header-bar>
+  <ion-content>
+  <form name="CreateEditQLSPOrderForm">
+    <div class="list padding card">
+    	<div class="item item-input">
+              <span class="invalid-input" ng-if="!CreateEditQLSPOrderWnd.qlspOrder.QLSPSanPham_title"></span>
+    		  <input type="text" ng-required="true" ng-model="CreateEditQLSPOrderWnd.qlspOrder.QLSPSanPham_title" placeholder="QLSPOrder {{ 'ORDER' | translate }}"/>
+    	</div>
+    	
+        <div class="item item-divider">{{ 'Infomation' | translate }}</div>
+    	<label class="item item-input item-floating-label" style="">
+			{{ 'Id' | translate }}:
+    		<input class="form-control" type="hidden" ng-model="CreateEditQLSPOrderWnd.qlspOrder.QLSPOrder_id" />
+    	</label>
+    	<label class="item item-input item-floating-label" style="">
+			{{ 'Hóa Đơn' | translate }}:
+    		<input class="form-control" type="hidden" ng-model="CreateEditQLSPOrderWnd.qlspOrder.QLSPInvoice_id" />
+    	</label>
+    	<label class="item item-input item-floating-label" style="">
+			{{ 'Mã Sản Phẩm' | translate }}:
+    		<input class="form-control" type="text" ng-model="CreateEditQLSPOrderWnd.qlspOrder.QLSPSanPham_code" />
+    	</label>
+    	<label class="item item-input item-floating-label" style="">
+			{{ 'Ngày' | translate }}:
+    		<input class="form-control" type="date" fix-input-date "" ng-model="CreateEditQLSPOrderWnd.qlspOrder.QLSPOrder_created" />
+    	</label>
+    	<label class="item item-input item-floating-label" style="">
+			{{ 'Số Lượng' | translate }}:
+    		<input class="form-control" type="number" ng-model="CreateEditQLSPOrderWnd.qlspOrder.QLSPOrder_count" />
+    	</label>
+    	<label class="item item-input item-floating-label" style="">
+			{{ 'Tổng' | translate }}:
+    		<input class="form-control" type="text" ng-model="CreateEditQLSPOrderWnd.qlspOrder.QLSPOrder_total" />
+    	</label>
+    	<label class="item item-input item-floating-label" style="">
+			{{ 'Tên Sản Phẩm' | translate }}:
+    		<input class="form-control" type="text" ng-model="CreateEditQLSPOrderWnd.qlspOrder.QLSPSanPham_title" />
+    	</label>
+
+
+     	<div class="padding">
+    		<button class="button button-dark button-block" ng-click="saveQLSPOrder()">{{ 'Save' | translate }}</button>
+    	</div>
+   	</div>
+  </form>
+
+  </ion-content>
+</ion-modal-view>
+

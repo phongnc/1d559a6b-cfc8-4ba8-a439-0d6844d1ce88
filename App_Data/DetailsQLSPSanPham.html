@@ -1,0 +1,47 @@
+
+<ion-view view-title="{{'Details' | translate}} {{ 'SẢN PHẨM' | translate }}">
+    <ion-nav-buttons side="right">
+        <button class="button ink button-icon button-clear ion-edit" ng-click="CreateEditQLSPSanPham(qlspSanPham)"></button>
+    </ion-nav-buttons>
+	<ion-content class="crud scroll-content ionic-scroll card">
+        <div class="padding product">
+            <h4 class="title">{{qlspSanPham.QLSPSanPham_title}}</h4>
+    <div class="ecommerce row">
+        <ion-scroll direction="x" style="width:100%;">
+            <div class="wide">
+
+            </div>
+        </ion-scroll>
+    </div>
+        </div>
+	    <div class="list padding">
+            <div class="item item-divider">{{ 'Infomation' | translate }}</div>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Id' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspSanPham.QLSPSanPham_id}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Tên Sản Phẩm' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspSanPham.QLSPSanPham_title}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Mã Sản Phẩm' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspSanPham.QLSPSanPham_code}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Giá 1' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspSanPham.QLSPSanPham_price1}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Giá 2' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspSanPham.QLSPSanPham_price2}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Ghi Chú' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspSanPham.QLSPSanPham_note}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Thành Viên' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspSanPham.QLSPThanhVien_id}} </p>
+	      </label>
+	      <label class="item item-text-wrap" style="">
+	      {{ 'Ảnh' | translate }}: <p class="pull-right" style="display:inline-block;"> {{qlspSanPham.QLSPSanPham_cover}} </p>
+	      </label>
+
+	    </div>
+	</ion-content>
+</ion-view>
+

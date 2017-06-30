@@ -1,0 +1,45 @@
+
+<ion-modal-view>
+	<ion-header-bar class="bar-dark">
+    <button class="button button-clear" ng-click="closeQLSPChannelWnd()"><i class="icon ion-ios-close-outline"></i></button>
+	  <h1 class="title">{{newQLSPChannel ? "CREATE" : "EDIT" | translate}} {{'ĐỢT BÁN' | translate}}</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="saveQLSPChannel()"><i class="icon ion-checkmark-circled"></i></button>
+    </div>
+	</ion-header-bar>
+  <ion-content>
+  <form name="CreateEditQLSPChannelForm">
+    <div class="list padding card">
+    	<div class="item item-input">
+              <span class="invalid-input" ng-if="!CreateEditQLSPChannelWnd.qlspChannel.QLSPChannel_title"></span>
+    		  <input type="text" ng-required="true" ng-model="CreateEditQLSPChannelWnd.qlspChannel.QLSPChannel_title" placeholder="QLSPChannel {{ 'ĐỢT BÁN' | translate }}"/>
+    	</div>
+    	
+        <div class="item item-divider">{{ 'Infomation' | translate }}</div>
+    	<label class="item item-input item-floating-label" style="">
+			{{ 'Id' | translate }}:
+    		<input class="form-control" type="hidden" ng-model="CreateEditQLSPChannelWnd.qlspChannel.QLSPChannel_id" />
+    	</label>
+    	<label class="item item-input item-floating-label" style="">
+			{{ 'Đợt Bán' | translate }}:
+    		<input class="form-control" type="text" ng-model="CreateEditQLSPChannelWnd.qlspChannel.QLSPChannel_title" />
+    	</label>
+    	<label class="item item-input item-floating-label" style="">
+			{{ 'Ngày' | translate }}:
+    		<input class="form-control" type="date" fix-input-date "" ng-model="CreateEditQLSPChannelWnd.qlspChannel.QLSPChannel_created" />
+    	</label>
+    	<label class="item item-input item-floating-label" style="">
+			{{ 'Thành Viên' | translate }}:
+    		<input class="form-control" type="hidden" ng-model="CreateEditQLSPChannelWnd.qlspChannel.QLSPThanhVien_id" />
+    	</label>
+
+
+     	<div class="padding">
+    		<button class="button button-dark button-block" ng-click="saveQLSPChannel()">{{ 'Save' | translate }}</button>
+    	</div>
+   	</div>
+  </form>
+
+  </ion-content>
+</ion-modal-view>
+
